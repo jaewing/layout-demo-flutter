@@ -53,6 +53,7 @@ class BaselinePageState extends State<BaselinePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
+        // The `BaseLineContent` widget for
         child: BaselineContent(crossAxisAlignment: _crossAxisAlignment),
       ),
     );
@@ -99,6 +100,9 @@ class BaselineContent extends StatelessWidget {
         ColoredBox(
           color: Colors.yellow,
           child: Row(
+            // `crossAxisAlignment` can be specified to align `Text` in the same
+            // way you would any other widgets when paired with the definition of
+            // the `textBaseline` parameter.
             crossAxisAlignment: crossAxisAlignment,
             textBaseline: TextBaseline.alphabetic,
             children: const [

@@ -87,6 +87,13 @@ class StackContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (useAlignment) {
+      // Stack places its `children` in a layered stack on top of each other.
+      // Think of it as widget grouping in the Z-axis (the direction coming out of the screen toward you).
+      //
+      // The order in which you place the widget in the `List` of `children` is the order in
+      // which the widget is placed on the canvas. The first item in the widget 'List' is the
+      // "bottom" of the `Stack`. The last item in the widget `List` would be the `Top' of the
+      // `Stack`.
       return Stack(
         alignment: alignment,
         children: const <Widget>[
@@ -117,6 +124,9 @@ class StackContent extends StatelessWidget {
       return Stack(
         alignment: alignment,
         children: const <Widget>[
+          // Because `SizedBox` is the largest widget spatially
+          // in the `Stack`, it determines the overall size of the
+          // `Stack`.
           SizedBox(
             width: 300.0,
             height: 300.0,
@@ -124,6 +134,16 @@ class StackContent extends StatelessWidget {
               color: Colors.yellow,
             ),
           ),
+          // Allows you to determine the position
+          // on the screen specific to the `child` widget
+          // you specify. Makes staggered layouts possible
+          // that would not be easy to create with the `Row`
+          // and `Column` widgets.
+          //
+          // The `Positioned` widgets are
+          // NOT effected by the `alignment` property of
+          // `Stack` due to the explicit properties of `Positioned`
+          // that determine the placement of the items.
           Positioned(
             left: 20.0,
             top: 20.0,

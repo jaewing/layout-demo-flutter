@@ -23,8 +23,22 @@ class PaddingPage extends StatelessWidget implements HasLayoutGroup {
         onLayoutToggle: onLayoutToggle,
       ),
       body: Column(
+        // Here we specify `stretch` to make sure our `Column`
+        // fills as much vertical space as there is available.
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          // `Padding` can be added vertically or horizontally.
+          //
+          // Also are able to specify the direction in which
+          // you want the padding to be added. You can specify a single
+          // side with either:
+          // `left`, `right`, `top`, `bottom`
+          //
+          // or you can specify padding on every side with:
+          // `all`
+          //
+          // Here we implement our custom widget `VerticalPadding` that
+          // we defined down below.
           VerticalPadding(
             color: Colors.green[100] ?? Colors.green,
             child: const ColoredText(text: 'First', color: Colors.green),
@@ -33,6 +47,23 @@ class PaddingPage extends StatelessWidget implements HasLayoutGroup {
             color: Colors.red[100] ?? Colors.red,
             child: const ColoredText(text: 'Second', color: Colors.red),
           ),
+          // Easy way of having consistent spacing that is easy to
+          // to structure in code in a readable way and be called
+          // repeatedly if you create a custom `SizedBox` widget for
+          // both the vertical and horizontal axis'.
+          //
+          // When you want specific dimensional padding, use `SizedBox`.
+          // Otherwise use `Expanded` if you don't have hard dimensional
+          // requirements in mind.
+          //
+          // The combination of `SizedBox` and `Expanded` will allow you to
+          // create a multitude of layouts that are both as flexible and rigid
+          // as your heart desires.
+          //
+          // NOTE: The `flex` property is actually optional. If you remove
+          // the `flex` property from all of the `children of `Expanded` it
+          // the `Expanded` widgets will share the space equally amongst
+          // themselves.
           const SizedBox(
             height: 50.0,
             child: ColoredText(
@@ -66,6 +97,17 @@ class PaddingPage extends StatelessWidget implements HasLayoutGroup {
   }
 }
 
+// Custom widget we created to show the properties of the
+// `Padding` widget.
+//
+// We return another custom widget called `ColoredBox` to
+// visually show the spacing characteristics of defining
+// a `Padding` widget with the `padding` property being
+// passed `symmetric` `vertical` padding.
+//
+// NOTE: The naming is a bit confusing here, there is both a
+// `padding` member we define in the constructor for `VerticalPadding`
+// and a `padding` property for the `Padding` widget.
 class VerticalPadding extends StatelessWidget {
   const VerticalPadding({
     super.key,
