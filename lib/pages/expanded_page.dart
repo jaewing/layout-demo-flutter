@@ -36,6 +36,13 @@ class ExpandedContent extends StatelessWidget {
       child: Column(
         children: [
           ExpandedColoredBox(points: 8, color: Colors.red),
+          // The `flex` property for `Expanded` determines its
+          // priority for how much space it is able to consume
+          // within the reference of a shared parent container. 
+          //
+          // When you want relational/proprtional padding between
+          // your widgets use `Expanded' depenent on the `flex` 
+          // values passed to the `children` of `Expanded`. 
           Expanded(
             flex: 5,
             child: Row(

@@ -61,7 +61,7 @@ class PaddingPage extends StatelessWidget implements HasLayoutGroup {
           // as your heart desires.
           //
           // NOTE: The `flex` property is actually optional. If you remove
-          // the `flex` property from all of the `children of `Expanded` it
+          // the `flex` property from all of the `children of `Expanded`:
           // the `Expanded` widgets will share the space equally amongst
           // themselves.
           const SizedBox(
