@@ -22,7 +22,18 @@ class PageViewPage extends StatelessWidget implements HasLayoutGroup {
         layoutType: LayoutType.pageView,
         onLayoutToggle: onLayoutToggle,
       ),
+      // `PageView` allows you to swipe between pages.
+      // It also has a property that allows you to choose
+      // whether the "auto-snap" feature is enabled or not.
+      //
+      // "Auto-snap": when you have partially swiped between two pages
+      // and then you release, it will snap to the page that is
+      // taking up the majority of the screen when released.
+      //
+      // Great for "step-by-step" processes.
+      // E.g., onboarding a new hire
       body: PageView(
+        scrollDirection: Axis.vertical,
         children: const [
           PageContent(index: 1, color: Colors.green),
           PageContent(index: 2, color: Colors.blue),

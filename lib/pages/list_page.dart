@@ -28,6 +28,15 @@ class ListPage extends StatelessWidget implements HasLayoutGroup {
         layoutType: LayoutType.list,
         onLayoutToggle: onLayoutToggle,
       ),
+      // `ListView` can be used to show muliple items either
+      // vertically or horizontally.
+      //
+      // `builder` is used to create a scrollable linear array of widgets
+      // that can be created on demand.
+      //
+      // NOTE: `builder` is only called for the children actually visible
+      // which makes it resource efficient for the case of a theoretically
+      // infinite list of scrollable items.
       body: ListView.builder(
         itemCount: allContacts.length,
         itemBuilder: (BuildContext content, int index) {
@@ -39,6 +48,9 @@ class ListPage extends StatelessWidget implements HasLayoutGroup {
   }
 }
 
+// `ListTile` is a single fixed height row that can
+// contain some text as well as a leading or trailing
+// `Icon`.
 class ContactListTile extends ListTile {
   ContactListTile(Contact contact, {super.key})
       : super(

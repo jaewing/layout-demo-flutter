@@ -15,10 +15,25 @@ class SliversPage extends StatelessWidget implements HasLayoutGroup {
 
   @override
   Widget build(BuildContext context) {
+    // `slivers` is a property of `CustomScrollView` in which
+    // we are able to specify a List of widgets. By using widgets
+    // with `Sliver` in the name, you are able to make various
+    // fancy scrolling effects.
+    //
+    // Options: lists, grids, expanding headers, etc.
+    //
+    // Think of it as the `Container` for all of the scrolling content.
     return CustomScrollView(
       slivers: <Widget>[
+        // `expandedHeight` is another property you can specify
+        // to determine the height when at the top of the page.
+        // The height is then reduced as you scroll until the
+        // scroll height of the `AppBar` is reached.
         SliverAppBar(
+          expandedHeight: 120,
           centerTitle: true,
+          // `pinned` determines whether the `AppBar` is
+          // shown when scrolling down the page.
           pinned: true,
           title: const Text('Slivers'),
           leading: IconButton(
@@ -28,6 +43,7 @@ class SliversPage extends StatelessWidget implements HasLayoutGroup {
             onPressed: onLayoutToggle,
           ),
         ),
+        // Similar to `GridView`.
         SliverGrid(
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 200.0,
@@ -48,6 +64,7 @@ class SliversPage extends StatelessWidget implements HasLayoutGroup {
             childCount: 20,
           ),
         ),
+        // Similar to `ListView`
         SliverFixedExtentList(
           itemExtent: 50.0,
           delegate: SliverChildBuilderDelegate(

@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:layout_demo_flutter/layout_type.dart';
 import 'package:layout_demo_flutter/pages/main_app_bar.dart';
 
+// Renders a `ListView` of nested horizontal `ListView`s.
+//
+// Think of Netflix where there is a list of movies grouped
+// by Genre, where each `ListView` Row is a Genre.
 class NestedPage extends StatelessWidget implements HasLayoutGroup {
   const NestedPage({
     super.key,
@@ -46,6 +50,11 @@ class NestedHorizontalListView extends StatelessWidget {
       Colors.orange
     ];
     const height = 136.0;
+    // `SizedBox` provides each row with a
+    // fixed height.
+    //
+    // Without `SizedBox` we get a "horizontal viewport
+    // has unbounded height" error.
     return SizedBox(
       height: height,
       child: ListView.builder(
